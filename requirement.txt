@@ -1,0 +1,11 @@
+alembic
+Python-dotenv
+python-jose[cryptography]
+python-multipart
+passlib
+bcrypt==4.0.1
+cryptography
+pymysql
+fastapi
+uvicorn
+sqlalchemy
