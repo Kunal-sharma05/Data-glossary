@@ -9,3 +9,8 @@ pymysql
 fastapi
 uvicorn
 sqlalchemy
+bs4
+langchain
+langgraph
+langchain-openai
+langchain-community

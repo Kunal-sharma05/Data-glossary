@@ -1,14 +1,18 @@
 from sqlmodel import SQLModel, Field
-from typing import Optional
 
 
-class Data(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
+class DataCreate(SQLModel, table=True):
+    id: int = Field(primary_key=True, default=None)
     table_name: str = Field(default=None, index=True)
-    field_name: str = Field(index=True, min_length=5)
-    description: str
-    data_element: str
-    checkTable: str
-    datatype: str
-    Length: int
-    Decimals: int | None = Field(default=0)
+    field_name: str = Field(index=True, default=None)
+    description: str | None = Field(default=None)
+    data_element: str | None = Field(default=None)
+    checkTable: str | None = Field(default=None)
+    datatype: str | None = Field(default=None)
+    Length: int | None = Field(default=None)
+    Decimals: int | None = Field(default=None)
+    Possible_values: str | None = Field(default=None)
+#
+#
+# class Data(DataCreate, table=True):
+#     id: int = Field(default=None,primary_key=True)

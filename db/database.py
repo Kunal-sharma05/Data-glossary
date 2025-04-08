@@ -1,8 +1,9 @@
 import os
 from sqlmodel import create_engine, Session
 from dotenv import load_dotenv
+from typing import Annotated
+from fastapi import Depends
 
-# Load environment variables
 load_dotenv()
 
 USER = os.getenv("USER")
@@ -11,7 +12,6 @@ HOST = os.getenv("HOST")
 DB_NAME = os.getenv("DB_NAME")
 PORT = os.getenv("PORT")
 
-# Database connection URL
 database_url = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
 engine = create_engine(database_url)
 
@@ -21,3 +21,4 @@ def get_db():
         yield session
 
 
+db_dependency = Annotated[Session, Depends(get_db)]

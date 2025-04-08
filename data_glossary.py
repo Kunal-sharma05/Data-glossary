@@ -20,4 +20,4 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(data, tags=["Data"])
+app.include_router(data, tags=["LLM RESPONSE"])

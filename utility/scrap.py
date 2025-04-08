@@ -17,8 +17,16 @@ def scrape_table_from_url(url):
         table = soup.find("table")
 
         if table:
+            for cell in table.findAll("td"):
+                nested_table = cell.find("table")
+                if nested_table:
+                    nested_table_df = pd.read_html(str(nested_table))[0]
+                    formated_values = "values: " + "|".join(nested_table_df.apply(lambda row: f"{row[0]}-{row[1]}",axis=1))
+                    cell.string = formated_values
             # Convert the table to a DataFrame
             df = pd.read_html(StringIO(str(table)))[0]
+            df.columns = list(df.columns[:-1]) + ["Possible Values"]
+            df.dropna(axis=1, how="all", inplace=True)
             return table_name, df
         else:
             print("No table found in the HTML content.")
