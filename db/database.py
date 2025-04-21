@@ -1,24 +1,23 @@
-import os
-from sqlmodel import create_engine, Session
-from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
 from typing import Annotated
 from fastapi import Depends
+from sqlalchemy.orm import Session
 
-load_dotenv()
+database_url = f"sqlite:///./data_glossary.db"
+engine = create_engine(database_url, connect_args={'check_same_thread': False})
 
-USER = os.getenv("USER")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("HOST")
-DB_NAME = os.getenv("DB_NAME")
-PORT = os.getenv("PORT")
-
-database_url = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
-engine = create_engine(database_url)
+SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
 
 
 def get_db():
-    with Session(engine) as session:
-        yield session
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 db_dependency = Annotated[Session, Depends(get_db)]
+
+base = declarative_base()

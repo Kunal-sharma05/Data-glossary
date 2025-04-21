@@ -1,0 +1,23 @@
+[project]
+name = "data-glossary"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "bcrypt==4.0.1",
+    "bs4>=0.0.2",
+    "cryptography>=44.0.2",
+    "faiss-cpu>=1.10.0",
+    "fastapi>=0.115.12",
+    "langchain>=0.3.23",
+    "langchain-community>=0.3.21",
+    "langchain-openai>=0.3.14",
+    "langgraph>=0.3.31",
+    "passlib>=1.7.4",
+    "pymysql>=1.1.1",
+    "python-dotenv>=1.1.0",
+    "python-multipart>=0.0.20",
+    "sqlalchemy>=2.0.40",
+    "uvicorn>=0.34.1",
+]

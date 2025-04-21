@@ -1,0 +1,72 @@
+sap_table_name,purpose,table_usage,where_it_is_used
+HRP1000,"This table is used to store object types such as positions, jobs, and organizational units within the Organizational Management module. It defines the structural elements of an organization.","The table is primarily used to maintain and retrieve data related to organizational objects. It helps in identifying and categorizing elements like positions, jobs, and organizational units.","This table is utilized in processes related to organizational structure design, reporting, and integration with other modules like Personnel Administration (PA) and Payroll. It is also used in transaction codes such as PPOME (Change Organizational Structure) and PPOCE (Create Organizational Structure)."
+HRP1001,"This table stores relationship data between organizational objects, such as the relationship between a position and an organizational unit or between jobs and positions.","It is used to define and maintain relationships between different elements of the organizational structure. Relationships are critical for ensuring hierarchical and functional connections within the organization.","This table is used in scenarios where relationships between organizational elements need to be established or analyzed, such as reporting hierarchies, workflow approvals, and role assignments. Transaction codes like PPOMW (Display Organizational Plan) and PPOCW (Change Organizational Plan) often access this table."
+HRP1018,"This table is used to store cost distribution data for positions. It helps in assigning costs to specific organizational positions for budgeting and financial analysis.","The table is used in processes related to cost allocation, financial planning, and integration with the Controlling (CO) module. It ensures that costs are distributed appropriately across organizational units.","This table is utilized during cost planning, analysis, and reporting. It is often accessed in transaction codes like PPOME (Change Organizational Structure) and PPOCA (Cost Assignment for Positions). It also integrates with financial modules for cost tracking and reporting."
+PA0000,"This table stores information related to employee actions, such as hiring, termination, promotions, transfers, and other personnel changes. It acts as the backbone for maintaining the employment lifecycle of an employee.","It is primarily used to record and track employee actions with their corresponding effective dates. This table ensures that all personnel actions are logged systematically and can be retrieved for reporting or auditing purposes.","Used in HR processes to manage employee lifecycle events.
+Integrated with payroll processes to ensure changes in employment status are reflected correctly.
+Accessed in transaction codes like PA40 (Personnel Actions) and PA30 (Maintain HR Master Data)."
+PA0001,"This table is used to store details regarding the organizational assignment of employees, such as their position, department, cost center, and company code. It provides a structure for linking employees to the organization hierarchy.","It helps in defining the organizational structure and ensures that employees are correctly mapped to their respective positions and reporting lines. This information is crucial for payroll processing, reporting, and authorization checks.","Utilized in organizational management processes.
+Accessed in transaction codes like PPOME (Change Organizational Plan) and PA30.
+Helps in determining cost allocations and reporting structures."
+PA0002,"This table stores personal information about employees, such as their name, date of birth, gender, marital status, and nationality. It acts as the primary repository for employee demographic data.","It is used for maintaining employee personal details, which are essential for HR processes such as payroll, benefits administration, and compliance reporting.","Accessed in transaction codes like PA30 and PA20 (Display HR Master Data).
+Integrated with payroll and benefits modules to ensure accurate processing based on personal attributes.
+Used in generating statutory reports and compliance documents."
+PA0006,"This table contains employee address details, including permanent and temporary addresses, contact numbers, and email addresses.","It is used to maintain up-to-date contact information for employees, which is essential for communication, payroll processing, and benefits administration.","Accessed in transaction codes like PA30 and PA20.
+Integrated with payroll systems to ensure accurate delivery of pay slips and other correspondence.
+Used in compliance reporting for employee location-based regulations."
+PA0014,"This table stores information related to recurring payments and deductions for employees, such as monthly allowances, bonuses, or deductions for loans.","It is used to automate payroll calculations by storing predefined recurring payment and deduction amounts, ensuring consistency and accuracy in payroll processing.","Accessed in payroll-related transaction codes like PC00_MXX_CALC (Payroll Calculation).
+Integrated with payroll systems to ensure recurring payments/deductions are processed correctly.
+Used in financial reporting to track employee-related expenses."
+PA0015,"This table contains information about one-time or irregular payments made to employees, such as bonuses, incentives, or reimbursements.","It is used to process and record additional payments that are not part of the regular payroll cycle. This ensures accurate tracking of such payments for financial reporting and auditing.","Accessed in payroll-related transaction codes like PC00_MXX_CALC.
+Integrated with payroll systems to ensure one-time payments are processed correctly.
+Used in financial reporting to track variable employee-related expenses."
+PA2001,"This table is used to store information related to employee absences, such as leave days, sick days, or other types of absence. It helps track the duration and reason for absences.","Captures details of absences reported by employees.
+Includes fields for absence type, start and end dates, and approval status.
+Facilitates reporting and analysis of absence trends across the organization.","Used in payroll processing to calculate deductions or adjustments for unpaid leave.
+Integrated into HR modules to manage employee records and absence quotas.
+Utilized in time evaluation processes to ensure accurate time tracking and compliance with leave policies."
+PA2002,"This table is designed to store data regarding employee attendances, such as overtime hours, regular work hours, and other attendance-related metrics.","Records attendance data, including clock-in and clock-out times.
+Tracks overtime hours and ensures compliance with labor laws.
+Provides input for payroll calculations, especially for overtime compensation.","Used in time evaluation processes to calculate total hours worked by employees.
+Integrated with payroll systems to determine payment for extra hours worked.
+Supports workforce management by providing attendance statistics for scheduling and resource planning."
+PA2006,"This table maintains information about employee leave entitlements, such as annual leave balances, sick leave quotas, and other leave types.","Stores leave quotas assigned to employees based on company policies.
+Tracks leave balances and ensures accurate updates after leave is taken.
+Facilitates compliance with labor laws regarding leave entitlements.","Used in employee self-service portals for leave requests and balance inquiries.
+Integrated into payroll systems to calculate leave payouts or deductions.
+Supports HR reporting to monitor leave utilization and forecast future leave requirements."
+PA2011,"This table is used to store time event data, such as clock-in and clock-out times, breaks, and other time-related events recorded through time-tracking systems.","Captures raw time event data from devices like biometric scanners or swipe cards.
+Provides input for time evaluation processes to calculate total work hours.
+Tracks deviations from scheduled work hours, such as late arrivals or early departures.","Used in integration with time management systems for real-time tracking of employee attendance.
+Supports payroll systems by providing accurate data for hourly wage calculations.
+Utilized in compliance reporting to ensure adherence to labor regulations regarding work hours."
+PCALAC,"PCALAC is used to store payroll results data. It contains the calculated payroll results for employees after payroll processing is completed.","This table is used to store the results of payroll calculations such as gross pay, net pay, deductions, and other payroll components.
+It acts as an intermediary table during payroll processing and is critical for payroll reporting and auditing.","Used in payroll processing programs and reports to retrieve payroll results for employees.
+Accessed by payroll administrators for analyzing payroll data and resolving discrepancies.
+Integrated with other payroll-related tables to provide a comprehensive view of payroll results."
+PCL2,"PCL2 is a cluster table that stores payroll data in a compressed format. It is primarily used to manage large volumes of payroll-related data efficiently.","Used to store payroll results, time evaluation results, and other cluster data related to HR processes.
+Ensures efficient storage and retrieval of payroll data by compressing the information into clusters.
+Acts as a repository for payroll results and time evaluation data.","Accessed during payroll processing to store and retrieve payroll results.
+Used in payroll reporting and auditing processes.
+Plays a key role in the integration of payroll with other HR modules such as Time Management and Benefits."
+RT,"RT is the results table that stores detailed payroll results for each employee after payroll processing.","Contains individual payroll components such as wage types, amounts, and calculation details.
+Used to provide a detailed breakdown of payroll results for reporting and analysis.
+Acts as a source for payroll reconciliation and auditing.","Accessed by payroll administrators for detailed payroll analysis and troubleshooting.
+Used in payroll reports to provide a breakdown of wage types and amounts.
+Integrated with other payroll tables to provide a detailed view of payroll results for employees."
+PB4000,"This table is primarily used for storing applicant data during recruitment processes. It serves as a repository for detailed information about individuals applying for positions within an organization. The table contains fields related to personal details, qualifications, experience, and other relevant data required for evaluating applicants.","The table is utilized by SAP HR (Human Resources) modules, specifically in the Recruitment submodule. It is accessed during the applicant data entry phase, when HR personnel input information about candidates. The data stored in this table can later be used for reporting, analysis, or integration with other HR processes such as onboarding or personnel administration.","Recruitment processes to maintain a centralized database of applicant information.
+Integration with workflows that involve candidate assessment, interview scheduling, and offer generation.
+Generating reports for recruitment metrics, such as applicant demographics, qualifications, or application statuses."
+PB4001,"This table is used to store information about actions performed on applicants during the recruitment process. It tracks activities such as application submission, interview scheduling, status changes, and decisions made regarding the applicants.","The table is utilized to record and manage the sequence of actions or events associated with each applicant. It provides a historical log of interactions and updates, ensuring that all recruitment-related activities are traceable. HR personnel use this table to monitor the progress of applicants through different stages of the recruitment lifecycle.","Tracking applicant actions, such as application receipt, interview scheduling, and offer acceptance/rejection.
+Workflow management for recruitment processes, ensuring that all steps are completed systematically.
+Auditing and compliance purposes, as it provides a detailed record of all actions taken on each applicant."
+HRP1026,"This table is primarily used to store data related to training activities. It contains information about vehicle registrations that are associated with training sessions, such as vehicles used for practical training or logistics support during training events.","Used for managing vehicle-related details during training sessions.
+Helps track vehicle allocation, usage, and maintenance for training purposes.
+Stores data like vehicle registration numbers, training session IDs, and associated trainers.","Training Management Modules: To ensure proper allocation of resources during training.
+HR Training Programs: For practical training sessions where vehicles are required (e.g., driver training programs or logistics training).
+Reporting: Used to generate reports on vehicle utilization during training sessions."
+HRP1027,"This table is designed to store event-related vehicle registration data. It includes information about vehicles used during events, such as conferences, seminars, or workshops organized by the company.","Used for managing vehicle details specific to events.
+Tracks vehicle registrations, event IDs, and associated personnel or departments.
+Helps ensure smooth logistical operations during events.","Event Management Modules: To organize and allocate vehicles for events.
+Corporate Event Planning: For transportation arrangements during company events.
+Reporting and Analysis: Provides insights into vehicle usage and event logistics."

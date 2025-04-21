@@ -1,45 +1,37 @@
 from fastapi import HTTPException, status
-from models.data import DataCreate
-from typing import Any
 from db.database import db_dependency
-from utility.scrap import scrape_table_from_url
-from sqlmodel import select
-import numpy as np
+from models.Session import SessionData
+from schemas.session import SessionData as SessionDataDTO
 
 
-def add_data(url: str, db: db_dependency):
-    table_name, df = scrape_table_from_url(url)
-    df = df.replace({np.nan: None})
-    for _, row in df.iterrows():
-        data_entry = DataCreate(
-            table_name=table_name,
-            field_name=row.get("Field", None),
-            description=row.get("Field.1", None),
-            data_element=row.get("Data element", None),
-            checkTable=row.get("Checktable", None),
-            datatype=row.get("Datatype", None),
-            Length=row.get("Length", None),
-            Decimals=row.get("Decimals", None),
-            Possible_values=row.get("Possible values", None)
-        )
-        print(data_entry)
-        # db_data = Data.model_validate(data_entry)
-        # print(db_data)
-        db.add(data_entry)
+def get_users(db: db_dependency):
+    return db.query(SessionData).all()
+
+
+def get_user_by_id(user_id: int, db: db_dependency):
+    return db.query(SessionData).filter(SessionData.session_id_id == user_id).first()
+
+
+def delete_user_by_id(user_id: int, db: db_dependency):
+    db.query(SessionData).filter(SessionData.session_id == user_id).delete()
     db.commit()
-    print(f"Data saved to the database successfully in the table:- {table_name}")
 
 
-def get_data(table_name: str, db: db_dependency) -> Any:
-    try:
+def add_user(session_data: SessionDataDTO, db: db_dependency) -> int:
+    session = SessionData(**session_data.model_dump())
+    db.add(session)
+    db.commit()
+    return session.session_id
 
-        statement = select(DataCreate).where(DataCreate.table_name == table_name)
-        data_entries = db.exec(statement).all()
 
-        if not data_entries:
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No data found in the database.")
+def update_user(user_id: int, session_data: SessionDataDTO, db: db_dependency):
+    session = db.query(SessionData).filter(SessionData.session_id == user_id).first()
+    if not session:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
-        return data_entries
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"An error occurred while "
-                                                                                      f"fetching data: {str(e)}")
+    for key, value in session_data.model_dump().items():
+        setattr(session, key, value)
+
+    db.commit()
+    db.refresh(session)
+    return session

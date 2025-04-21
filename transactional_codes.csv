@@ -1,0 +1,102 @@
+transactional_code_name,purpose,code_usage,where_it_is_used,key_features,related_sap_tables,transactional_codes_related
+PA20,"Used to display HR master data without making changes to it.","Allows users to view employee master data for reference or reporting purposes.","HR departments and managers use it to access employee information in a read-only mode.","View employee data across various infotypes.
+Provides read-only access to ensure data integrity.
+Facilitates reporting and decision-making processes.","PA0001: Organizational Assignment
+PA0002: Personal Data
+PA0006: Addresses","PA30: Maintain HR master data
+PA40: Personnel actions"
+PA30,"Used to maintain HR master data for employees, such as personal details, organizational assignments, and payroll data.","Allows users to create, update, or delete employee master data records.","Widely used in HR departments for managing employee information in SAP systems.","Edit and maintain employee master data (infotypes).
+Access to various infotypes such as personal data, organizational data, and payroll-related data.
+Supports mass data maintenance.","PA0001: Organizational Assignment
+PA0002: Personal Data
+PA0006: Addresses
+PA0014: Recurring Payments/Deductions","PA20: Display HR master data
+PA40: Personnel actions"
+PA40,"Used to perform personnel actions such as hiring, termination, promotions, and transfers.","Automates the process of executing multiple infotypes in a sequence during personnel actions.","HR departments use it to execute standard HR processes and workflows.","Automates the sequence of infotypes for specific actions.
+Reduces manual effort in maintaining HR data during personnel changes.
+Ensures consistency in data entry for personnel actions.","PA0000: Actions
+PA0001: Organizational Assignment
+PA0002: Personal Data","PA30: Maintain HR master data
+PA20: Display HR master data"
+PA61,"Allows users to maintain and update employee time data, including attendance, absences, and other time-related entries.","Used to manually edit or input time-related data into the system for individual employees.","HR departments use this transaction to ensure accurate and up-to-date time data for employees.","Direct editing of time data records.
+Easy navigation between different time data types.
+Integration with payroll and time evaluation processes.","PA2010: Time Data
+PA2001: Absences
+PA2002: Attendance","PT60: Time evaluation.
+PT66: Display time evaluation results"
+PB10,"Used to create, edit, and maintain applicant data in the SAP system during the recruitment process.","Enables HR personnel to input new applicant details, update existing records, and manage applicant information for recruitment purposes.","Primarily used in HR departments to manage applicant records throughout the recruitment lifecycle.","Create new applicant profiles.
+Update applicant details such as contact information, qualifications, and application status.
+Manage applicant history and recruitment stages.
+Integration with recruitment workflows and reporting.","PB400: Applicant Master Data
+PB401: Applicant Qualifications
+PB402: Applicant Status","PB20: Display applicant data"
+PB20,"Used to view and analyze applicant data stored in the SAP system.","Enables HR personnel to access and review applicant information without making changes to the records.","HR departments use this transaction to analyze applicant profiles, qualifications, and recruitment statuses.","Display detailed applicant profiles.
+View applicant qualifications and application status.
+Generate reports for recruitment analysis.
+Provides read-only access to applicant records.","PB400: Applicant Master Data
+PB401: Applicant Qualifications
+PB402: Applicant Status","PB10: Maintain applicant data"
+PC00_MXX_CALC,"Used to calculate payroll for employees based on predefined rules, wage types, and country-specific regulations.","Executes payroll runs for a specific payroll period and generates payroll results.","Primarily used in HR and payroll departments to process employee salaries, deductions, and benefits.","Handles country-specific payroll calculations (XX represents the country code).
+Processes wage types, deductions, and benefits.
+Generates payroll logs and results.
+Supports retroactive payroll processing.","RT: Results Table (Payroll results).
+WPBP: Work Center/Basic Pay.
+CRT: Cumulated Results Table.
+PCL2: Cluster Table for Payroll Results.","PC00_MXX_CEDT: Payroll results display.
+PC00_MXX_PBS: Payroll posting to accounting"
+PC00_MXX_CEDT,"Displays detailed payroll results for employees after payroll calculation.","Used to review and analyze payroll results, including earnings, deductions, and net pay.","HR and payroll departments use this transaction to validate payroll results and ensure accuracy before posting.","Provides detailed payroll results for individual employees.
+Displays wage types, deductions, and net pay.
+Allows analysis of payroll logs and retroactive entries.","RT: Results Table (Payroll results).
+CRT: Cumulated Results Table.
+PCL2: Cluster Table for Payroll Results.","PC00_MXX_CALC: Payroll calculation.
+PC00_MXX_PBS: Payroll posting to accounting"
+PC00_MXX_PBS,"Posts payroll results to the accounting system for financial reconciliation.","Transfers payroll data (e.g., salaries, deductions, and benefits) to financial accounting.","Used by payroll and finance departments to ensure payroll data is accurately reflected in the accounting system.","Posts payroll results to accounting.
+Generates financial documents for payroll transactions.
+Supports integration with FI/CO (Financial Accounting/Controlling).
+Handles country-specific accounting rules (XX represents the country code).","BKPF: Accounting Document Header.
+BSEG: Accounting Document Segment.
+PCL2: Cluster Table for Payroll Results.","PC00_MXX_CALC: Payroll calculation.
+PC00_MXX_CEDT: Payroll results display"
+PE03,"Used to view details of existing training programs, including schedules, participants, and resources.","Allows HR personnel and managers to review training programs without making changes.","Utilized in HR departments for monitoring and reporting on training programs.","Displays detailed information about training programs.
+Provides an overview of schedules and participants.
+Facilitates reporting on training activities and outcomes.","HRP1000: Object table (stores general information about training objects).
+HRP1001: Relationships table (stores relationships between training programs and other objects).
+HRP1024: Qualifications table (stores qualifications related to training programs).","PE04: Maintain training programs"
+PE04,"Used to create, edit, and maintain training programs, including course details, schedules, instructors, and resources.","Enables HR personnel to manage all aspects of training programs, ensuring that they are up-to-date and aligned with organizational goals.","Primarily used in HR departments to manage employee training and development initiatives.","Creation and modification of training programs.
+Assignment of instructors and resources to courses.
+Scheduling and rescheduling of training sessions.
+Integration with employee records for tracking participation.","HRP1000: Object table (stores general information about training objects).
+HRP1001: Relationships table (stores relationships between training programs and other objects).
+HRP1024: Qualifications table (stores qualifications related to training programs).","PE03: Display training programs"
+PP01,"Used to maintain plan data for organizational objects such as positions, jobs, organizational units, etc.","Modify attributes of organizational objects and maintain their relationships.","Used by HR administrators for detailed data maintenance and updates.","Allows maintenance of various infotypes for organizational objects.
+Flexible navigation between different objects and their relationships.
+Supports creating, changing, and deleting organizational objects.","HRP1000: Infotype 1000 (Object data).
+HRP1001: Infotype 1001 (Relationships).
+T777D: Infotype attributes.","PPOME: Change organizational structure.
+PPOCE: Create organizational structure."
+PPOCE,"Used to create a new organizational structure in SAP.","Build organizational units, assign positions, and define relationships from scratch.","Primarily used during the initial setup of organizational management or when creating new organizational entities.","Step-by-step creation of organizational units and positions.
+Easy assignment of relationships between objects.
+Integration with personnel administration for assigning employees.","HRP1000: Infotype 1000 (Object data).
+HRP1001: Infotype 1001 (Relationships).
+T777S: Object types.","PPOME: Change organizational structure.
+PP01: Maintain plan data."
+PPOME,"Used to change the organizational structure in SAP.","Modify existing organizational units, positions, and relationships within the organizational structure.","Typically utilized by HR professionals and administrators managing organizational hierarchies.","Graphical interface for organizational structure visualization.
+Allows editing of organizational units, positions, and their relationships.
+Integration with other HR modules.","HRP1000: Infotype 1000 (Object data).
+HRP1001: Infotype 1001 (Relationships).
+T777I: Infotype directory.","PPOSE: Display organizational structure.
+PPOCE: Create organizational structure."
+PT60,"Used to evaluate employee time data, such as attendance, absences, overtime, and other time-related information.","Executes the time evaluation process based on the time management rules defined in the system.","Primarily used in HR departments to calculate payroll-relevant time data and ensure compliance with organizational policies.","Processes time data for payroll.
+Generates time evaluation logs.
+Identifies errors or inconsistencies in time data.
+Provides detailed reports on time evaluation.","PA2010: Time Data
+PA2001: Absences
+PA2002: Attendance
+ZES: Time Evaluation Results","PT66: Display time evaluation results.
+PA61: Maintain time data"
+PT66,"Displays the results of time evaluation for employees, including calculated time balances, errors, and warnings.","Used to review and analyze the output of the time evaluation process.","HR departments use this transaction to validate time evaluation results and ensure accuracy before payroll processing.","Displays detailed logs of time evaluation.
+Highlights errors and warnings in time data.
+Provides an overview of calculated time balances.","ZES: Time Evaluation Results
+PA2001: Absences
+PA2002: Attendance","PT60: Time evaluation.
+PA61: Maintain time data"
